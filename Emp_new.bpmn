@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1seoz7l" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.12.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1seoz7l" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.12.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
   <bpmn:collaboration id="Collaboration_0sf5kxe">
+    <bpmn:extensionElements>
+      <camunda:properties>
+        <camunda:property />
+      </camunda:properties>
+    </bpmn:extensionElements>
     <bpmn:participant id="Participant_1jirqcu" name="HR dept" processRef="Process_1nt8brc" />
     <bpmn:participant id="Participant_0ycxvcp" name="IT dept" processRef="Process_01t7ams" />
     <bpmn:participant id="Participant_1crkb4d" name="New employee" />
@@ -8,10 +13,6 @@
     <bpmn:messageFlow id="Flow_1vggkoj" sourceRef="Activity_03xs34o" targetRef="Participant_1crkb4d" />
   </bpmn:collaboration>
   <bpmn:process id="Process_1nt8brc" isExecutable="false">
-    <bpmn:serviceTask id="Activity_09n4lip" name="Generate employee ID">
-      <bpmn:incoming>Flow_1x9bti5</bpmn:incoming>
-      <bpmn:outgoing>Flow_1g6rhj8</bpmn:outgoing>
-    </bpmn:serviceTask>
     <bpmn:serviceTask id="Activity_0ttdimg" name="Create entry in HR system">
       <bpmn:incoming>Flow_1g6rhj8</bpmn:incoming>
       <bpmn:outgoing>Flow_1t17dhj</bpmn:outgoing>
@@ -29,7 +30,15 @@
       <bpmn:messageEventDefinition id="MessageEventDefinition_191scop" />
     </bpmn:endEvent>
     <bpmn:dataStoreReference id="DataStoreReference_1kaf9if" name="HR system" />
-    <bpmn:userTask id="Activity_1wegtry" name="Collect personal informations">
+    <bpmn:userTask id="Activity_1wegtry" name="Collect personal informations" camunda:assignee="demo">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="firstname" label="First Name" type="string" />
+          <camunda:formField id="joindate" label="Join Date" type="date" />
+          <camunda:formField id="empdept" label="Employee Department" type="string" />
+          <camunda:formField id="surname" label="Surname" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_052i1x7</bpmn:incoming>
       <bpmn:outgoing>Flow_1x9bti5</bpmn:outgoing>
     </bpmn:userTask>
@@ -37,6 +46,15 @@
     <bpmn:sequenceFlow id="Flow_1g6rhj8" sourceRef="Activity_09n4lip" targetRef="Activity_0ttdimg" />
     <bpmn:sequenceFlow id="Flow_1x9bti5" sourceRef="Activity_1wegtry" targetRef="Activity_09n4lip" />
     <bpmn:sequenceFlow id="Flow_052i1x7" sourceRef="Event_0iasvfc" targetRef="Activity_1wegtry" />
+    <bpmn:userTask id="Activity_09n4lip" name="Generate employee ID" camunda:assignee="demo">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="empId" label="Employee ID" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1x9bti5</bpmn:incoming>
+      <bpmn:outgoing>Flow_1g6rhj8</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmn:process id="Process_01t7ams" isExecutable="false">
     <bpmn:task id="Activity_1bzgk1l" />
@@ -75,25 +93,22 @@
       <bpmndi:BPMNShape id="Participant_1jirqcu_di" bpmnElement="Participant_1jirqcu" isHorizontal="true">
         <dc:Bounds x="160" y="100" width="949" height="250" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_1t17dhj_di" bpmnElement="Flow_1t17dhj">
-        <di:waypoint x="889" y="200" />
-        <di:waypoint x="993" y="200" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1g6rhj8_di" bpmnElement="Flow_1g6rhj8">
-        <di:waypoint x="700" y="200" />
-        <di:waypoint x="789" y="200" />
+      <bpmndi:BPMNEdge id="Flow_052i1x7_di" bpmnElement="Flow_052i1x7">
+        <di:waypoint x="259" y="200" />
+        <di:waypoint x="400" y="200" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1x9bti5_di" bpmnElement="Flow_1x9bti5">
         <di:waypoint x="500" y="200" />
         <di:waypoint x="600" y="200" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_052i1x7_di" bpmnElement="Flow_052i1x7">
-        <di:waypoint x="259" y="200" />
-        <di:waypoint x="400" y="200" />
+      <bpmndi:BPMNEdge id="Flow_1g6rhj8_di" bpmnElement="Flow_1g6rhj8">
+        <di:waypoint x="700" y="200" />
+        <di:waypoint x="789" y="200" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Activity_09n4lip_di" bpmnElement="Activity_09n4lip">
-        <dc:Bounds x="600" y="160" width="100" height="80" />
-      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1t17dhj_di" bpmnElement="Flow_1t17dhj">
+        <di:waypoint x="889" y="200" />
+        <di:waypoint x="993" y="200" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Activity_0ttdimg_di" bpmnElement="Activity_0ttdimg">
         <dc:Bounds x="789" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -118,24 +133,27 @@
       <bpmndi:BPMNShape id="Activity_1wegtry_di" bpmnElement="Activity_1wegtry">
         <dc:Bounds x="400" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0l52ti3_di" bpmnElement="Activity_09n4lip">
+        <dc:Bounds x="600" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_0ycxvcp_di" bpmnElement="Participant_0ycxvcp" isHorizontal="true">
         <dc:Bounds x="160" y="430" width="940" height="260" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_0intsxc_di" bpmnElement="Flow_0intsxc">
-        <di:waypoint x="689" y="530" />
-        <di:waypoint x="769" y="530" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0b8l3y0_di" bpmnElement="Flow_0b8l3y0">
-        <di:waypoint x="869" y="530" />
-        <di:waypoint x="939" y="530" />
+      <bpmndi:BPMNEdge id="Flow_0ctfd9x_di" bpmnElement="Flow_0ctfd9x">
+        <di:waypoint x="267" y="530" />
+        <di:waypoint x="390" y="530" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0yxxf8x_di" bpmnElement="Flow_0yxxf8x">
         <di:waypoint x="490" y="530" />
         <di:waypoint x="589" y="530" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0ctfd9x_di" bpmnElement="Flow_0ctfd9x">
-        <di:waypoint x="267" y="530" />
-        <di:waypoint x="390" y="530" />
+      <bpmndi:BPMNEdge id="Flow_0b8l3y0_di" bpmnElement="Flow_0b8l3y0">
+        <di:waypoint x="869" y="530" />
+        <di:waypoint x="939" y="530" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0intsxc_di" bpmnElement="Flow_0intsxc">
+        <di:waypoint x="689" y="530" />
+        <di:waypoint x="769" y="530" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Activity_1bzgk1l_di" bpmnElement="Activity_1bzgk1l">
         <dc:Bounds x="390" y="490" width="100" height="80" />
