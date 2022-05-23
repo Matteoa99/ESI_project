@@ -14,6 +14,8 @@ public class NewEmployeeWorker {
 
 		createProfile();
 
+		sentCredentialToEmployee();
+
 	}
 
 	static void createEntryHR() {
