@@ -1,0 +1,5 @@
+com\unicam\newemployee\CamundaBpmProcessApplication.class
+com\unicam\newemployee\EmailAdmin.class
+com\unicam\newemployee\ProcessConstants.class
+com\unicam\newemployee\EmailIT.class
+com\unicam\newemployee\LoggerDelegate.class
