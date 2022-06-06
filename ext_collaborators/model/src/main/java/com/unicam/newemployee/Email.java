@@ -10,7 +10,6 @@ public class Email implements JavaDelegate {
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 
-		// TODO Auto-generated method stub
 		Map<String, Object> variables = execution.getVariables();
 		execution.getProcessEngineServices().getRuntimeService().createMessageCorrelation("doc_msg")
 				.setVariables(variables).correlate();
