@@ -38,7 +38,7 @@ public class ExtCollaboratorWorker {
 			String empId = externalTask.getVariable("empID");
 
 			LOGGER.info("New employee ticket created\nName: " + name + " surname: " + surname + " start collaboration: "
-					+ startcollab + " end collaboration: "+ endcollab + " matricola: " + empId);
+					+ startcollab + " end collaboration: "+ endcollab + " matricola: " + empId+ "\n");
 
 			// Complete the task
 			externalTaskService.complete(externalTask);
@@ -67,7 +67,7 @@ public class ExtCollaboratorWorker {
 		// subscribe to an external task topic as specified in the process
 		client.subscribe("create_profile").lockDuration(1000).handler((externalTask, externalTaskService) -> {
 
-			LOGGER.info("New profile create");
+			LOGGER.info("New profile create\n");
 
 			// Complete the task
 			externalTaskService.complete(externalTask);
@@ -82,7 +82,7 @@ public class ExtCollaboratorWorker {
 		// subscribe to an external task topic as specified in the process
 		client.subscribe("notify_emp").lockDuration(1000).handler((externalTask, externalTaskService) -> {
 
-			LOGGER.info("Credenttial sent to the new employee");
+			LOGGER.info("Credenttial sent to the new employee\n");
 
 			// Complete the task
 			externalTaskService.complete(externalTask);
@@ -112,7 +112,7 @@ public class ExtCollaboratorWorker {
 		// subscribe to an external task topic as specified in the process
 		client.subscribe("update_entry").lockDuration(1000).handler((externalTask, externalTaskService) -> {
 
-			LOGGER.info("Entry updated");
+			LOGGER.info("Entry updated\n");
 
 			// Complete the task
 			externalTaskService.complete(externalTask);

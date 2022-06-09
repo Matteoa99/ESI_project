@@ -8,12 +8,12 @@
     </bpmn:extensionElements>
     <bpmn:participant id="Participant_1crkb4d" name="New employee" />
     <bpmn:participant id="HR_dept_new" name="HR_dept_new" processRef="Process_1nt8brc" />
-    <bpmn:participant id="IT_dept_new" name="IT dept_new" processRef="New_emp_IT_dept" />
+    <bpmn:participant id="IT_dept_new" name="IT dept_new" processRef="new_emp_IT_dept" />
     <bpmn:messageFlow id="Flow_1vggkoj" sourceRef="Activity_03xs34o" targetRef="Participant_1crkb4d" />
     <bpmn:messageFlow id="Flow_0w7etip" sourceRef="Event_1hr34yh" targetRef="Event_0iw2saj" />
   </bpmn:collaboration>
   <bpmn:message id="Message_1q5i1q8" name="IT_dept_msg" />
-  <bpmn:process id="Process_1nt8brc" name="New_emp_HR_dept" isExecutable="true">
+  <bpmn:process id="Process_1nt8brc" name="new_emp_HR_dept" isExecutable="true">
     <bpmn:sequenceFlow id="Flow_1x9bti5" sourceRef="Activity_1wegtry" targetRef="Activity_09n4lip" />
     <bpmn:sequenceFlow id="Flow_052i1x7" sourceRef="Event_0iasvfc" targetRef="Activity_1wegtry" />
     <bpmn:sequenceFlow id="Flow_1t17dhj" sourceRef="Activity_0ttdimg" targetRef="Event_1hr34yh" />
@@ -61,7 +61,7 @@
       </bpmn:dataInputAssociation>
     </bpmn:serviceTask>
   </bpmn:process>
-  <bpmn:process id="New_emp_IT_dept" isExecutable="true">
+  <bpmn:process id="new_emp_IT_dept" isExecutable="true">
     <bpmn:sequenceFlow id="Flow_0intsxc" sourceRef="Activity_1vrtb87" targetRef="Activity_03xs34o" />
     <bpmn:sequenceFlow id="Flow_0b8l3y0" sourceRef="Activity_03xs34o" targetRef="Event_0k1kr0i" />
     <bpmn:sequenceFlow id="Flow_0yxxf8x" sourceRef="Activity_1spsdjy" targetRef="Activity_1vrtb87" />
