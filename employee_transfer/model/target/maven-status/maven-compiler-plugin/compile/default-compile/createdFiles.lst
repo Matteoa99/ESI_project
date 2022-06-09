@@ -1,0 +1,5 @@
+com\unicam\employeetransfert\CamundaBpmProcessApplication.class
+com\unicam\employeetransfert\EmailToHr.class
+com\unicam\employeetransfert\LoggerDelegate.class
+com\unicam\employeetransfert\ProcessConstants.class
+com\unicam\employeetransfert\EmailToIT.class
