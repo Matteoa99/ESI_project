@@ -33,7 +33,7 @@ public class SupplierWorker {
 			// Complete the task
 			externalTaskService.complete(externalTask);
 		}).open();
-	}
+	}	
 
 	static void creEntryOnApp() {
 		ExternalTaskClient client = ExternalTaskClient.create().baseUrl("http://localhost:8080/engine-rest")

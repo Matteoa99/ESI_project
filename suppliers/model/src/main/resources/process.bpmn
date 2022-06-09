@@ -16,8 +16,6 @@
     <bpmn:userTask id="Activity_0x8xs3y" name="Insert information" camunda:assignee="demo">
       <bpmn:extensionElements>
         <camunda:formData>
-          <camunda:formField id="name" label="Name" type="string" />
-          <camunda:formField id="surname" label="Surname" type="string" />
           <camunda:formField id="companyname" label="Company Name" type="string" />
           <camunda:formField id="entrydate" label="Entry Date" type="date" />
         </camunda:formData>
