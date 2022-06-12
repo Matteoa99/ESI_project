@@ -61,5 +61,20 @@ public class EmpTransferWorker {
 			externalTaskService.complete(externalTask);
 		}).open();
 	}
+	
+	static void closeTicket() {
+		ExternalTaskClient client = ExternalTaskClient.create().baseUrl("http://localhost:8080/engine-rest")
+				.asyncResponseTimeout(10000) // long polling timeout
+				.build();
+
+		// subscribe to an external task topic as specified in the process
+		client.subscribe("close_ticket").lockDuration(1000).handler((externalTask, externalTaskService) -> {
+
+			LOGGER.info("Ticket close\n");
+
+			// Complete the task
+			externalTaskService.complete(externalTask);
+		}).open();
+	}
 
 }
