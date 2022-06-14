@@ -2,7 +2,7 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1seoz7l" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.12.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
   <bpmn:collaboration id="Collaboration_0sf5kxe">
     <bpmn:participant id="Participant_1jirqcu" name="Mgr dept" processRef="mgr_customer" />
-    <bpmn:participant id="Participant_0ycxvcp" name="IT dept" processRef="mgr_it_dept" />
+    <bpmn:participant id="Participant_0ycxvcp" name="IT dept" processRef="it_dept_customer" />
     <bpmn:participant id="Participant_089ay0c" name="Customer" />
     <bpmn:messageFlow id="Flow_0sirowm" sourceRef="Event_0epttp8" targetRef="Event_0zlgcth" />
     <bpmn:messageFlow id="Flow_0uvunrq" sourceRef="Activity_130z2kq" targetRef="Event_15p3w9u" />
@@ -25,7 +25,7 @@
       <bpmn:outgoing>Flow_0uq5i5d</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_0pcn7a9" messageRef="Message_0rqia0k" camunda:class="com.unicam.newemployee.EmailToIt" />
     </bpmn:intermediateThrowEvent>
-    <bpmn:userTask id="Activity_0lqvytv" name="Get customer info" camunda:assignee="de">
+    <bpmn:userTask id="Activity_0lqvytv" name="Get customer info" camunda:assignee="demo">
       <bpmn:extensionElements>
         <camunda:formData>
           <camunda:formField id="company_name" label="Company name" type="string" />
@@ -45,7 +45,7 @@
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_0uq5i5d" sourceRef="Event_0epttp8" targetRef="Event_15p3w9u" />
   </bpmn:process>
-  <bpmn:process id="mgr_it_dept" isExecutable="true">
+  <bpmn:process id="it_dept_customer" isExecutable="true">
     <bpmn:startEvent id="Event_0zlgcth" name="Customare informations">
       <bpmn:outgoing>Flow_08bmxb3</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_1dsgt5y" messageRef="Message_0rqia0k" />
