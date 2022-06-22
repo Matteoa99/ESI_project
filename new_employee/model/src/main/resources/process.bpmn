@@ -46,7 +46,7 @@
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1t17dhj</bpmn:incoming>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_191scop" messageRef="Message_1q5i1q8" camunda:class="com.unicam.demo.Email" />
+      <bpmn:messageEventDefinition id="MessageEventDefinition_191scop" messageRef="Message_1q5i1q8" camunda:class="com.unicam.newemployee.Email" />
     </bpmn:endEvent>
     <bpmn:startEvent id="Event_0iasvfc" name="New Emp">
       <bpmn:outgoing>Flow_052i1x7</bpmn:outgoing>
